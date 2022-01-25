@@ -2,6 +2,11 @@
   "name": "fe1020",
   "packageManager": "yarn@3.1.1",
   "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
     "typescript": "^4.5.5",
     "webpack-dev-server": "^4.7.3"
   },
@@ -27,7 +32,7 @@
   "version": "1.0.0",
   "main": "webpack.common.js",
   "scripts": {
-    "start": "webpack-dev-server  --config webpack.dev.js --open",
+    "start": "webpack-dev-server  --config webpack.dev.js --hot --open",
     "build": "webpack --config webpack.prod.js"
   },
   "repository": {

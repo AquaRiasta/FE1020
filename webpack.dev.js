@@ -19,7 +19,7 @@ module.exports = merge(common, {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader", 
+          "style-loader",
           "css-loader",
           "sass-loader"
         ]
@@ -32,5 +32,6 @@ module.exports = merge(common, {
   devServer: {
     static: './dist',
     hot: true,
+    historyApiFallback: true,
   },
 });
