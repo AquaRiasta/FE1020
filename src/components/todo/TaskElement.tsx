@@ -35,6 +35,7 @@ class TaskElement extends React.Component<MyProps> {
     return (
       <div className="task__item">
         <input
+          className="task__checkbox button button__checkbox"
           type="checkbox"
           name={this.props.id}
           id={this.props.id}
@@ -42,13 +43,25 @@ class TaskElement extends React.Component<MyProps> {
           onChange={this.checkTask}
         />
         <div className="task__detail">
-          <div className="task__detail--title">{this.props.title}</div>
-          <div className="task__detail--description">
+          <div className="task__detail-title heading heading__title">
+            {this.props.title}
+          </div>
+          <div className="task__detail-description heading heading__subtitle">
             {this.props.description}
           </div>
         </div>
-        <button onClick={this.toggleModal}>Edit</button>
-        <button onClick={this.deleteTask}>Delete</button>
+        <button
+          className="task__button button button__icon"
+          onClick={this.toggleModal}
+        >
+          ✏️
+        </button>
+        <button
+          className="task__button button button__icon"
+          onClick={this.deleteTask}
+        >
+          🗑️
+        </button>
         {this.state.modal ? (
           <TodoModal
             title={this.props.title}

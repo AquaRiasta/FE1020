@@ -30,8 +30,9 @@ class TodoModal extends React.Component<MyProps> {
   render(): React.ReactNode {
     return (
       <Modal>
-        <div className="modal__content">
+        <div className="modal task__modal">
           <input
+            className="task__checkbox button button__checkbox"
             type="checkbox"
             name={this.props.id}
             id={this.props.id}
@@ -39,19 +40,31 @@ class TodoModal extends React.Component<MyProps> {
             onChange={(e) => this.setState({ done: !this.state.done })}
           />
           <input
+            className="task__input form__input input input__text"
             type="text"
             placeholder="Task title"
             value={this.state.title}
             onChange={(e) => this.setState({ title: e.target.value })}
           />
           <textarea
+            className="task__input form__input input input__textarea"
             placeholder="Task description"
             value={this.state.description}
             onChange={(e) => this.setState({ description: e.target.value })}
           />
           <div className="modal__button">
-            <button onClick={this.saveEditedTask}>Save</button>
-            <button onClick={this.props.toggleModal}>Cancel</button>
+            <button
+              className="task__button button button__box-container button__modification"
+              onClick={this.saveEditedTask}
+            >
+              Save
+            </button>
+            <button
+              className="task__button button button__box-container button__modification"
+              onClick={this.props.toggleModal}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       </Modal>

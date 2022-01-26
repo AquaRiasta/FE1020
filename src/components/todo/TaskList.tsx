@@ -9,7 +9,7 @@ interface MyProps {
 class TaskList extends React.Component<MyProps> {
   clearAllTask = () => {
     this.props.utilities.clearAllTask();
-  }
+  };
 
   state = {
     selection: "all",
@@ -17,16 +17,34 @@ class TaskList extends React.Component<MyProps> {
 
   render() {
     return (
-      <>
-        <div className="task__button--filter">
-          <button onClick={(e) => this.setState({ selection: "all" })}>
-            All
+      <div className="container">
+        <div className="task__buttons">
+          <button
+            className={
+              "task__button button button__box-container button__filter " +
+              (this.state.selection === "all" ? "button__filter--active" : "")
+            }
+            onClick={(e) => this.setState({ selection: "all" })}
+          >
+            📃 All
           </button>
-          <button onClick={(e) => this.setState({ selection: "todo" })}>
-            Todo
+          <button
+            className={
+              "task__button button button__box-container button__filter " +
+              (this.state.selection === "todo" ? "button__filter--active" : "")
+            }
+            onClick={(e) => this.setState({ selection: "todo" })}
+          >
+            ⌚ Todo
           </button>
-          <button onClick={(e) => this.setState({ selection: "done" })}>
-            Done
+          <button
+            className={
+              "task__button button button__box-container button__filter " +
+              (this.state.selection === "done" ? "button__filter--active" : "")
+            }
+            onClick={(e) => this.setState({ selection: "done" })}
+          >
+            ✅ Done
           </button>
         </div>
         <div className="task__list">
@@ -52,11 +70,21 @@ class TaskList extends React.Component<MyProps> {
               />
             ))}
         </div>
-        <div className="task__button--action">
-          <button onClick={this.props.utilities.clearTask}>Clear all</button>
-          <button onClick={this.props.utilities.clearDoneTask}>Clear 'done'</button>
+        <div className="task__buttons">
+          <button
+            className="task__button button button__box-container button__clear"
+            onClick={this.props.utilities.clearTask}
+          >
+            ❌ Clear all
+          </button>
+          <button
+            className="task__button button button__box-container button__clear"
+            onClick={this.props.utilities.clearDoneTask}
+          >
+            ❎ Clear 'done'
+          </button>
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -1,25 +1,35 @@
-import * as React from "react";
+import "./assets/scss/main.scss"
+import React from "react";
 import { render } from "react-dom";
 import Header from "./components/common/Header";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+  BrowserRouter,
+} from "react-router-dom";
 import AppContext from "./components/common/AppContext";
 import Landing from "./components/pages/Landing";
 import TodoApp from "./components/pages/TodoApp";
+import UserApp from "./components/pages/UserApp";
+import UserElement from "./components/user/UserElement";
 
 class App extends React.Component {
   render(): React.ReactNode {
     return (
       <AppContext.Provider value={{ selection: "landing" }}>
         <div className="main">
-          <Router>
+          <BrowserRouter>
             <Header />
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/todo-list" element={<TodoApp />} />
-              {/* <Route path="/users" element={UserApp} /> */}
+              <Route path="/users" element={<UserApp />} />
+              <Route path="/users/:id" element={<UserElement />} />
               {/* <Route element={NotFound} /> */}
             </Routes>
-          </Router>
+          </BrowserRouter>
         </div>
       </AppContext.Provider>
     );
