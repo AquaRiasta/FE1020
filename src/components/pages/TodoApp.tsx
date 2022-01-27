@@ -86,10 +86,10 @@ class TodoApp extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="task">
         <TaskCreate addTask={this.addTask} />
         <TaskList taskData={this.state.taskData} utilities={this.utilities} />
-      </>
+      </div>
     );
   }
 }

@@ -54,13 +54,13 @@ class TodoModal extends React.Component<MyProps> {
           />
           <div className="modal__button">
             <button
-              className="task__button button button__box-container button__modification"
+              className="task__button button button__box button__modification"
               onClick={this.saveEditedTask}
             >
               Save
             </button>
             <button
-              className="task__button button button__box-container button__modification"
+              className="task__button button button__box button__modification"
               onClick={this.props.toggleModal}
             >
               Cancel

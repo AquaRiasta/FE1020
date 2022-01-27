@@ -1,0 +1,35 @@
+.button {
+  cursor: pointer;
+
+  &__box {
+    background-color: white;
+    padding: .5rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $color-black;
+    border: .2rem black solid;
+  }
+
+  &__box-container {
+    width: 100%;
+    padding: .5rem;
+    @include border;
+    color: black;
+    font-weight: 700;
+
+    &:hover:not(.task__button--active) {
+      background-color: #eee;
+    }
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+  }
+
+  &__checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: .5rem 1rem;
+  }
+}

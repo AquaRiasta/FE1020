@@ -21,8 +21,8 @@ class TaskList extends React.Component<MyProps> {
         <div className="task__buttons">
           <button
             className={
-              "task__button button button__box-container button__filter " +
-              (this.state.selection === "all" ? "button__filter--active" : "")
+              "task__button button button__box-container " +
+              (this.state.selection === "all" ? "task__button--active" : "")
             }
             onClick={(e) => this.setState({ selection: "all" })}
           >
@@ -30,8 +30,8 @@ class TaskList extends React.Component<MyProps> {
           </button>
           <button
             className={
-              "task__button button button__box-container button__filter " +
-              (this.state.selection === "todo" ? "button__filter--active" : "")
+              "task__button button button__box-container " +
+              (this.state.selection === "todo" ? "task__button--active" : "")
             }
             onClick={(e) => this.setState({ selection: "todo" })}
           >
@@ -39,8 +39,8 @@ class TaskList extends React.Component<MyProps> {
           </button>
           <button
             className={
-              "task__button button button__box-container button__filter " +
-              (this.state.selection === "done" ? "button__filter--active" : "")
+              "task__button button button__box-container " +
+              (this.state.selection === "done" ? "task__button--active" : "")
             }
             onClick={(e) => this.setState({ selection: "done" })}
           >
@@ -48,7 +48,8 @@ class TaskList extends React.Component<MyProps> {
           </button>
         </div>
         <div className="task__list">
-          {this.props.taskData
+          {(this.props.taskData.length != 0)
+          ? this.props.taskData
             .filter((task: any) => {
               console.log(task);
               if (this.state.selection === "all") {
@@ -68,17 +69,18 @@ class TaskList extends React.Component<MyProps> {
                 utilities={this.props.utilities}
                 key={task.id}
               />
-            ))}
+            ))
+          : <p className="task__empty">No task to show</p>}
         </div>
         <div className="task__buttons">
           <button
-            className="task__button button button__box-container button__clear"
+            className="task__button button button__box-container task__button--clear"
             onClick={this.props.utilities.clearTask}
           >
             ❌ Clear all
           </button>
           <button
-            className="task__button button button__box-container button__clear"
+            className="task__button button button__box-container task__button--clear"
             onClick={this.props.utilities.clearDoneTask}
           >
             ❎ Clear 'done'

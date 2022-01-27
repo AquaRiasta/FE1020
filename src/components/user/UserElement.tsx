@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams } from "react-router";
-import { Route, Routes } from "react-router-dom";
+import UserErrorBoundary from "./UserErrorBoundary";
+import { Link } from "react-router-dom";
 
 interface UserInfo {
   name: string;
@@ -13,9 +13,11 @@ interface UserInfo {
   id: number;
 }
 
-class UserElement extends React.Component {
+class User extends React.Component {
   state = {
     user: {} as UserInfo,
+    userNotFound: false,
+    fetchedAPI: false,
   };
 
   async componentDidMount() {
@@ -38,6 +40,8 @@ class UserElement extends React.Component {
         return formattedUser;
       });
       this.setState({ user: userData[Number(this.getID()) - 1] || {} });
+      if (!this.state.user.name) this.setState({ userNotFound: true });
+      else this.setState({ fetchedAPI: true });
     } catch (error) {
       console.log(error);
     }
@@ -49,16 +53,53 @@ class UserElement extends React.Component {
   };
 
   render() {
-    return (
-      <div className="user__detail">
-        <div className="user__detail--name heading heading__title">{this.state.user.name}</div>
-        <div className="user__detail--username heading heading__subtitle">{this.state.user.username}</div>
-        <div className="user__detail--company heading heading__info">🏢 {this.state.user.company}</div>
-        <div className="user__detail--email heading heading__info">✉️ {this.state.user.email}</div>
-        <div className="user__detail--address heading heading__info">🏠 {this.state.user.address}</div>
-        <div className="user__detail--number heading heading__info">📞 {this.state.user.number}</div>
-        <div className="user__detail--website heading heading__info">🖥️ {this.state.user.website}</div>
+    if (this.state.userNotFound) throw new Error("User not found");
+
+    return this.state.fetchedAPI ? (
+      <div className="user__container">
+        <div className="user__detail">
+          <h1 className="user__detail--name heading heading__title">
+            {this.state.user.name}
+          </h1>
+          <h2 className="user__detail--username heading heading__subtitle">
+            {this.state.user.username}
+          </h2>
+          <h3 className="user__detail--company heading heading__info">
+            🏢 {this.state.user.company}
+          </h3>
+          <h3 className="user__detail--email heading heading__info">
+            ✉️ {this.state.user.email}
+          </h3>
+          <h3 className="user__detail--address heading heading__info">
+            🏠 {this.state.user.address}
+          </h3>
+          <h3 className="user__detail--number heading heading__info">
+            📞 {this.state.user.number}
+          </h3>
+          <h3 className="user__detail--website heading heading__info">
+            🖥️ {this.state.user.website}
+          </h3>
+          <Link to="/users" className="user__detail--link">
+            <button className="user__detail--button button button__box">
+              ↩️ Return
+            </button>
+          </Link>
+        </div>
       </div>
+    ) : (
+      <div className="user__container">
+        <div className="user__detail">Loading...</div>
+      </div>
+    );
+  }
+}
+
+class UserElement extends React.Component {
+  render() {
+    return (
+      <UserErrorBoundary>
+        <User />
+      </UserErrorBoundary>
     );
   }
 }

@@ -45,12 +45,12 @@ class UserList extends React.Component {
 
   render() {
     return (
-      <div className="user__list container">
+      <div className="user__list">
         {this.state.users.map((user: UserInfo) => {
           return (
             <Link to={`/users/${user.id}`} key={user.id}>
-              <div className="user__name heading__title heading">{user.name}</div>
-              <div className="user__username heading__subtitle heading">{user.username}</div>
+              <h2 className="user__name heading__title heading">{user.name}</h2>
+              <h3 className="user__username heading__subtitle heading">{user.username}</h3>
             </Link>
           );
         })}

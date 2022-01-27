@@ -1,0 +1,34 @@
+.user {
+  &__list {
+    margin-top: 5vh;
+    margin-bottom: 1rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    a {
+      width: min(90vw, 800px);
+      @include border;
+      margin-bottom: 1rem;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: black;
+      
+      &:visited,
+      &:hover,
+      &:active {
+        color: black;
+      }
+
+      &:active {
+        background-color: $color-secondary;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

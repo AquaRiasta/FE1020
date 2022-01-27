@@ -27,7 +27,7 @@ class TaskCreate extends React.Component<MyProps> {
           className="task__input form__input input input__textarea"
         />
         <button
-          className="task__button button button__box-container button__create"
+          className="task__button button button__box-container task__button--create"
           onClick={() => {
             this.props.addTask(this.state.title, this.state.description);
             this.setState({ title: "", description: "" });

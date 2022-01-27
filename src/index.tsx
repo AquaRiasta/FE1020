@@ -1,4 +1,4 @@
-import "./assets/scss/main.scss"
+import "./assets/scss/main.scss";
 import React from "react";
 import { render } from "react-dom";
 import Header from "./components/common/Header";
@@ -14,6 +14,7 @@ import Landing from "./components/pages/Landing";
 import TodoApp from "./components/pages/TodoApp";
 import UserApp from "./components/pages/UserApp";
 import UserElement from "./components/user/UserElement";
+import Error404 from "./components/common/Error404";
 
 class App extends React.Component {
   render(): React.ReactNode {
@@ -27,7 +28,7 @@ class App extends React.Component {
               <Route path="/todo-list" element={<TodoApp />} />
               <Route path="/users" element={<UserApp />} />
               <Route path="/users/:id" element={<UserElement />} />
-              {/* <Route element={NotFound} /> */}
+              <Route path="*" element={<Error404 />} />
             </Routes>
           </BrowserRouter>
         </div>

@@ -43,12 +43,12 @@ class TaskElement extends React.Component<MyProps> {
           onChange={this.checkTask}
         />
         <div className="task__detail">
-          <div className="task__detail-title heading heading__title">
+          <h2 className="task__detail-title heading heading__title">
             {this.props.title}
-          </div>
-          <div className="task__detail-description heading heading__subtitle">
+          </h2>
+          <p className="task__detail-description heading heading__subtitle">
             {this.props.description}
-          </div>
+          </p>
         </div>
         <button
           className="task__button button button__icon"

@@ -8,17 +8,17 @@ class Header extends React.Component {
 
   render(): React.ReactNode {
     return (
-      <nav className="navigation">
-        <div className="navigation__wrapper">
-          <NavLink to="/" className="navigation__logo">
+      <nav className="header__container">
+        <div className="header__wrapper">
+          <NavLink to="/" className="header__logo">
             FE1020
           </NavLink>
         </div>
-        <div className="navigation__wrapper">
-          <NavLink to="/todo-list" className="navigation__button">
+        <div className="header__wrapper">
+          <NavLink to="/todo-list" className="header__button button__box button">
             Todo App
           </NavLink>
-          <NavLink to="/users" className="navigation__button">
+          <NavLink to="/users" className="header__button button__box button">
             User Directory
           </NavLink>
         </div>
